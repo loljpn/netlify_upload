@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漫画ビューア - グループ一覧</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            background-color: #000;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #000;
+            color: #888;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #888;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.5em;
+            padding: 15px;
+            background-color: rgba(34, 34, 34, 0.5);
+            border-radius: 8px;
+            border: 1px solid #222;
+        }
+        
+        .group-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+        
+        .group-link {
+            background-color: #111;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: #888;
+            border: 1px solid #222;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+        
+        .group-link:hover {
+            transform: translateY(-3px);
+            background-color: #222;
+            color: #fff;
+            border-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .group-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .group-link {
+                padding: 12px;
+                font-size: 0.85em;
+            }
+            
+            h1 {
+                font-size: 1.2em;
+                padding: 12px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>チャプターグループ一覧</h1>
+        <div class="group-grid" id="groupList"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const groupList = document.getElementById('groupList');
+            
+            // 5チャプターごとにグループ化
+            for (let i = 34; i <= 189; i += 5) {
+                const groupEnd = Math.min(i + 4, 189);
+                const link = document.createElement('a');
+                link.href = `group_${i}.html`;
+                link.className = 'group-link';
+                link.textContent = `第${i}話 - 第${groupEnd}話`;
+                groupList.appendChild(link);
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>第86話 - 漫画ビューア</title>
+    <style>
+        body {
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+        }
+        .content-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .chapter-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            padding: 5px 15px;
+            border-radius: 15px;
+            background-color: #333;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="chapter-container" id="imageContainer"></div>
+        <div class="navigation">
+            <a href="../81/index.html" class="nav-button">5話前へ</a>
+            <a href="../../index.html" class="nav-button">目次</a>
+            <a href="../91/index.html" class="nav-button">5話後へ</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('imageContainer');
+            const imageCount = 130;
+
+            for (let i = 1; i <= imageCount; i++) {
+                const img = document.createElement('img');
+                img.src = `86_${i}.webp`;
+                img.loading = 'lazy';
+                container.appendChild(img);
+            }
+        });
+    </script>
+</body>
+</html>
